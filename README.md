@@ -5,8 +5,8 @@ To make live easier we added two simple http request function to javascript (htt
 
 ## Used frameworks
 
-restservice was implemented by the gin framework (github.com/gin-gonic/gin)
-javascript will be executed over the otto js framework (github.com/robertkrimen/otto)
+- restservice was implemented by the gin framework (github.com/gin-gonic/gin)
+- javascript will be executed over the otto js framework (github.com/robertkrimen/otto)
 
 ## Further plans
 -To the service we will implement a commandline tool to test the javascript code locally. also we want to make it possible to push data to the server over the commandline tool.
