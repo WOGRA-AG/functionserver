@@ -1,0 +1,5 @@
+DatabaseName: "maxbot"
+DatabaseUrl: "127.0.0.1"
+DatabasePort: "3306"
+Login: "root"
+Password: "root"

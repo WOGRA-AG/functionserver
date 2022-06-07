@@ -1,0 +1,10 @@
+Accesstokens:
+  - token: "1"
+    user: "internal"
+    password: "internal"
+  - token: "2"
+    user: "internal"
+    password: "internal"
+  - token: "3"
+    user: "internal"
+    password: "internal"
