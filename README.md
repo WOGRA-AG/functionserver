@@ -199,7 +199,46 @@ https://localhost:8080/deleteFunction
   the service provider will support you with an appId. Only with an valid appId you are able to add functions to the server. 
   
   
+### /executeFunction
+
+delets the given function in database. After deletion execution is not possible anymore. If successfull code 200 will be returned.
+
+#### Sample call
+
+https://localhost:8080/executeFunction
+
+#### JSON Body:
+``{
+    "name": "<name of function>",
+    "botId": "<botId of Function>",
+    "appId": "<provided appId>"
+    "params": "<paramter name and value map>"
+}``
+
+#### Sample JSON Body
+``{
+    "name": "add",
+    "botId": "1",
+    "appId": "1",
+    "params": {"p1" : "4", "p2" : "6"}
+}``
+    
+#### Sample result
+{
+    "result": "10"
+}
+
+
+#### Explanation of the JSON input values:
+ 
+ **name**
+  the unique name of the function corresponding to the botid. 
   
+ **botId**
+  The id of the bot which needs this function. This service was introduce as simple functionserver  our max chatbot system. So the bot developer can easily add custom functions to bots. So a botId is always mandantory. If you want to use this service for other purposes. set the botId to 0. 
+  
+  **appId**
+  the service provider will support you with an appId. Only with an valid appId you are able to add functions to the server.   
   
   
   
