@@ -28,14 +28,21 @@ https://localhost:8080/addFunction
 #### JSON Body:
 
 ``{
-    "name" : "<name of function>",
-    "botId" : "<the botId>",
-    "code" : "<the javascript code>",
-    "version" : 0,
-    "appId" : "<the given appId or accesstoken which allows you to add functions on the server>"
+    "name" : "<name of function>",  
+    "botId" : "<the botId>",  
+    "code" : "<the javascript code>",  
+    "version" : 0,  
+    "appId" : "<the given appId or accesstoken which allows you to add functions on the server>"  
 }``
   
-#### Sample JSON BOdy
+#### Sample JSON Body
+`` {  
+    "name" : "test",  
+    "botId" : "1",  
+    "code" : "2+2;",  
+    "version" : 0,  
+    "appId" : "1"  
+}``
   
  #### Explanation of the values:
  
