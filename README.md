@@ -17,7 +17,7 @@ Except of the ping call, all requests are post requests with json bodies. There 
 
 All calls will be described here:
 
-### /addFunction
+### /addFunction (Post)
 
 adds a new function to the server and stores it in the database. This call doesn't executes and validates the fucntion. It returns an error if the function already exists for the given botId. If the function was successfully added to the database. the function returns the stored function object with http 200.
 
@@ -67,9 +67,9 @@ https://localhost:8080/addFunction
   the service provider will support you with an appId. Only with an valid appId you are able to add functions to the server. 
   
   
-### /getFunction
+### /getFunction (Post)
 
-returns nthe function data of the given function in database. If the function wasn't found an 404 error code will be returned.
+returns the function data of the given function in database. If the function wasn't found an 404 error code will be returned.
 
 #### Sample call
 
@@ -110,7 +110,7 @@ https://localhost:8080/getFunction
   **appId**
   the service provider will support you with an appId. Only with an valid appId you are able to add functions to the server. 
   
-  ### /updateFunction
+  ### /updateFunction (Post)
 
 updates a given function on the functionserver. The code will be replaced in the database. If successfull, the function returns the stored function object with http 200.
 
@@ -159,7 +159,7 @@ https://localhost:8080/updateFunction
   **appId**
   the service provider will support you with an appId. Only with an valid appId you are able to add functions to the server. 
   
-### /deleteFunction
+### /deleteFunction (Post)
 
 delets the given function in database. After deletion execution is not possible anymore. If successfull code 200 will be returned.
 
@@ -199,7 +199,7 @@ https://localhost:8080/deleteFunction
   the service provider will support you with an appId. Only with an valid appId you are able to add functions to the server. 
   
   
-### /executeFunction
+### /executeFunction (Post)
 
 delets the given function in database. After deletion execution is not possible anymore. If successfull code 200 will be returned.
 
@@ -240,8 +240,61 @@ https://localhost:8080/executeFunction
   **appId**
   the service provider will support you with an appId. Only with an valid appId you are able to add functions to the server.   
   
+  **params**
+  The params which will be injected in the runtime. In the add example above the code in the script engine is return parseInt(p1) + parseInt(p2), because every parameter will be added as string to the script engine. the result will always be returned as string as well.
+
+### /getFunctionList (Post)
+
+returns all functions of the given botId.
+
+#### Sample call
+
+https://localhost:8080/getFunctionList
+
+#### JSON Body:
+``{
+    "botId": "<botId of Function>",
+    "appId": "<provided appId>"
+}``
+
+#### Sample JSON Body
+``{
+    "botId": "1",
+    "appId": "jakfhakjdfhurfueinakn76283vdjkdksvhkjd"
+}``
+    
+#### Sample result
+
+``{
+    "name": "test",
+    "botId": "1",
+    "code": "2+2;",
+    "version": 0,
+    "appId": "jakfhakjdfhurfueinakn76283vdjkdksvhkjd"
+},
+{
+    "name": "test23",
+    "botId": "1",
+    "code": "2+2;",
+    "version": 0,
+    "appId": "jakfhakjdfhurfueinakn76283vdjkdksvhkjd"
+}``
+
+#### Explanation of the JSON input values:
   
+ **botId**
+  The id of the bot which needs this function. This service was introduce as simple functionserver  our max chatbot system. So the bot developer can easily add custom functions to bots. So a botId is always mandantory. If you want to use this service for other purposes. set the botId to 0. 
   
+  **appId**
+  the service provider will support you with an appId. Only with an valid appId you are able to add functions to the server. 
+
+### /ping (Get)
+
+returns pong with http status 200. Is only to check if the service is started.
+
+#### Sample call
+
+https://localhost:8080/ping
   
 
 ## Supported javascript
