@@ -19,7 +19,7 @@ All calls will be described here:
 
 ### /addFunction
 
-adds a new function to the server and stores it in the database. This call doesn't executes and validates the fucntion. It returns an error if the function already exists for the given botId.
+adds a new function to the server and stores it in the database. This call doesn't executes and validates the fucntion. It returns an error if the function already exists for the given botId. If the function was successfully added to the database. the function returns the stored function object with http 200.
 
 #### Sample call
 
@@ -31,7 +31,6 @@ https://localhost:8080/addFunction
     "name" : "<name of function>",  
     "botId" : "<the botId>",  
     "code" : "<the javascript code>",  
-    "version" : 0,  
     "appId" : "<the given appId or accesstoken which allows you to add functions on the server>"  
 }``
   
@@ -40,11 +39,20 @@ https://localhost:8080/addFunction
     "name" : "test",  
     "botId" : "1",  
     "code" : "2+2;",  
-    "version" : 0,  
-    "appId" : "1"  
+    "appId" : "jakfhakjdfhurfueinakn76283vdjkdksvhkjd"  
 }``
-  
- #### Explanation of the values:
+
+#### Sample result
+
+``{
+    "name": "test",
+    "botId": "1",
+    "code": "2+2;",
+    "version": 0,
+    "appId": "jakfhakjdfhurfueinakn76283vdjkdksvhkjd"
+}``
+
+#### Explanation of the JSON input values:
  
  **name**
   the unique name of the function corresponding to the botid. 
@@ -55,8 +63,49 @@ https://localhost:8080/addFunction
   **code**
   The javascript code of the function. Which code is supported will be described in the supported javascript section.
   
- **version**
-  can always be 0. At the moment this has no effect. In the future we want to add version control and then we need this.
+  **appId**
+  the service provider will support you with an appId. Only with an valid appId you are able to add functions to the server. 
+  
+  
+### /getFunction
+
+returns nthe function data of the given function in database.
+
+#### Sample call
+
+https://localhost:8080/getFunction
+
+#### JSON Body:
+``{
+    "name": "<name of function>",
+    "botId": "<botId of Function>",
+    "appId": "<provided appId>"
+}``
+
+#### Sample JSON Body
+``{
+    "name": "test",
+    "botId": "1",
+    "appId": "jakfhakjdfhurfueinakn76283vdjkdksvhkjd"
+}``
+    
+#### Sample result
+
+``{
+    "name": "test",
+    "botId": "1",
+    "code": "2+2;",
+    "version": 0,
+    "appId": "jakfhakjdfhurfueinakn76283vdjkdksvhkjd"
+}``
+
+#### Explanation of the JSON input values:
+ 
+ **name**
+  the unique name of the function corresponding to the botid. 
+  
+ **botId**
+  The id of the bot which needs this function. This service was introduce as simple functionserver  our max chatbot system. So the bot developer can easily add custom functions to bots. So a botId is always mandantory. If you want to use this service for other purposes. set the botId to 0. 
   
   **appId**
   the service provider will support you with an appId. Only with an valid appId you are able to add functions to the server. 
