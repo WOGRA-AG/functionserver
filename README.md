@@ -299,7 +299,14 @@ https://localhost:8080/ping
 
 ## Supported javascript
 
-The javascript engine of otto supports ECMA Script 5. We added further function which enhances the script engine.
+The javascript engine of otto supports ECMA Script 5. We added further function which enhances the script engine. The code which should be executed will be loaded from database. The code will be surrounded by a function head and footer and a function call. The function should always return something.
+
+**Example:**
+
+function wrapper() {
+<code from database>
+}
+wrapper();
 
 ### Enhanced HTTP Requests
 We added httpGet and httpPost request to the javascript engine which returns the result as string. it is very simple to call this requests.
@@ -340,6 +347,4 @@ the body which will be sent via post to the server.
 - javascript will be executed over the otto js framework (github.com/robertkrimen/otto)  
 
 ## Further plans
--To the service we will implement a commandline tool to test the javascript code locally. also we want to make it possible to push data to the server over the commandline tool.
-- Beside jaavscript we want to execute webassembly at the server.
-- A further step is to make it possible, that the user can load and save json documents in a table to store data over the functions.
+see issue list for further plans.
