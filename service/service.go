@@ -219,7 +219,7 @@ func deleteCredentials(c *gin.Context) {
 	fds := functionManager.DeleteCredentials(json["superUserAppId"], json["appId"], json["botId"])
 
 	if fds == true {
-		c.IndentedJSON(http.StatusOK, "Access granted")
+		c.IndentedJSON(http.StatusOK, "Access deleted")
 		return
 	} else {
 		c.IndentedJSON(http.StatusBadRequest, "Access failed")
