@@ -307,6 +307,8 @@ function wrapper() {
 <code from database>
 }
 wrapper();
+    
+To prevent endless loops in function code, the execution of a function has a maximum duration of 10 seconds. If a function doesn't finish in this time, the execution will be cancelled.
 
 ### Enhanced HTTP Requests
 We added httpGet and httpPost request to the javascript engine which returns the result as string. it is very simple to call this requests.
