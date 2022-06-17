@@ -340,6 +340,20 @@ the type of the body for example application/json
 **body**
 the body which will be sent via post to the server.
 
+### Integrated key value store
+To load and save data we integrated a key value store for storing and loading data. The data will be stored regarding to the botid. so the key must be unique with the botid. the value will be stored as long text. So you are able to store json documents or any other strings. We offer three function for the key value store:
+- loadDocument(string key)
+- saveDocument(string key, string content)
+- deleteDcoument(string key)
+    
+#### string loadDocument(string key)
+loads the document with given key and returns the content as string.
+    
+#### bool saveDocument(string key, string content)
+ saves the document conent with the given key. returns true if storing was successfull. if the key already exists, the content will be overridden by the function.
+    
+#### bool deleteDocument(string key)
+deletes the document with the given key.
   
 ## Used frameworks
 
