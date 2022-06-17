@@ -294,7 +294,7 @@ returns pong with http status 200. Is only to check if the service is started.
 
 #### Sample call
 
-https://localhost:8080/ping
+``https://localhost:8080/ping``
   
 
 ## Supported javascript
@@ -303,10 +303,10 @@ The javascript engine of otto supports ECMA Script 5. We added further function 
 
 **Example:**
 
-function wrapper() {
+``function wrapper() {
 <code from database>
 }
-wrapper();
+wrapper();``
     
 To prevent endless loops in function code, the execution of a function has a maximum duration of 10 seconds. If a function doesn't finish in this time, the execution will be cancelled.
 
@@ -319,7 +319,7 @@ returns the result of a get call to the given address.
 
 ##### Example
 
-httpGet("https://wogra.com")
+``httpGet("https://wogra.com")``
 
 **address**
 the server address whcih should be called like https://localhost:8080
@@ -329,7 +329,7 @@ the server address whcih should be called like https://localhost:8080
 
 ##### Example
 
-httpPost("https://wogra.com/dosomehting", "application/json", "{\"a\" : \"b\"}")
+``httpPost("https://wogra.com/dosomehting", "application/json", "{\"a\" : \"b\"}")``
 
 returns the result of a post call to the given address.
 
