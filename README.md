@@ -374,7 +374,7 @@ if the appId was successfully created:
 if not:
 ``http.StatusBadRequest, "create AppId failed"``
 
-###### Explanation of the JSON input values:
+##### Explanation of the JSON input values:
   
  **superUserAppId**
   The superuserAppId which want's to create the new appId.
@@ -411,7 +411,7 @@ if the appId has the credentials:
 if not:
 ``http.StatusBadRequest, "deletion of AppId failed"``
 
-##### Explanation of the JSON input values:
+#### Explanation of the JSON input values:
   
  **superUserAppId**
   The superuserAppId which want's to create the new appId.
@@ -448,7 +448,7 @@ if the appId has the credentials:
 if not:
 ``http.StatusBadRequest, "Access failed"``
 
-##### Explanation of the JSON input values:
+#### Explanation of the JSON input values:
   
  **superUserAppId**
   The superuserAppId which want's to create the new appId.
@@ -488,7 +488,7 @@ if the appId has the credentials:
 if not:
 ``http.StatusBadRequest, "Access failed"``
 
-##### Explanation of the JSON input values:
+#### Explanation of the JSON input values:
   
  **superUserAppId**
   The superuserAppId which want's to create the new appId.
