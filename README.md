@@ -233,7 +233,7 @@ https://localhost:8080/executeFunction
 ``{
     "name": "<name of function>",
     "botId": "<botId of Function>",
-    "appId": "<provided appId>"
+    "appId": "<provided appId>",
     "params": "<paramter name and value map>"
 }``
 
@@ -363,7 +363,7 @@ https://localhost:8080/createAppId
 ###### Sample JSON Body
 ``{
     "superUserAppId": "1",
-    "owner": "Willy Mustermann from Sample Inc."
+    "owner": "Willy Mustermann from Sample Inc.",
     "contact": "willy.mustermann@sample.com"
 }``
     
