@@ -10,7 +10,7 @@ Except of the ping call, all requests are post requests with json bodies. There 
 ### Rest calls calls which doesn't need credentials
 -  /ping (get)
 
-### Rest calls calls which need default credentials (appId and botId must be assigned on the server)
+### Rest calls calls which need default credentials (appId and botId must be assigned at the server)
 -  /addFunction (post)
 -  /getFunction (post)
 -  /updateFunction (post)
@@ -36,6 +36,8 @@ returns pong with http status 200. Is only to check if the service is started.
 ##### Sample call
 
 ``https://localhost:8080/ping``
+
+### Details to rest calls calls which need default credentials (appId and botId must be assigned at the server)
 
 #### /addFunction (Post)
 
@@ -341,16 +343,16 @@ if not:
   **appId**
   the appId which is expected to be assigned to the botId, and is able to execute function. If the given appId is a superuser appId, it returns true as well.
 
-## Rest calls calls which need super user credentials (superuser appId is required)
+### Rest calls calls which need super user credentials (superuser appId is required)
 
-### /createAppId (post)
+#### /createAppId (post)
 creates a new appId and returns it. 
 
-##### Sample call
+###### Sample call
 
 https://localhost:8080/createAppId
 
-##### JSON Body:
+###### JSON Body:
 
 ``{
     "superUserAppId": "<appId of a superuser>",
@@ -358,21 +360,21 @@ https://localhost:8080/createAppId
     "contact": "<the mailaddress of the owner>"
 }``
 
-##### Sample JSON Body
+###### Sample JSON Body
 ``{
     "superUserAppId": "1",
     "owner": "Willy Mustermann from Sample Inc."
     "contact": "willy.mustermann@sample.com"
 }``
     
-##### Sample result
+###### Sample result
 
 if the appId was successfully created:
 ``http.StatusOK, "3596e30d-af06-4285-87f2-15019b942a11"``
 if not:
 ``http.StatusBadRequest, "create AppId failed"``
 
-##### Explanation of the JSON input values:
+###### Explanation of the JSON input values:
   
  **superUserAppId**
   The superuserAppId which want's to create the new appId.
