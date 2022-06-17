@@ -27,15 +27,25 @@ Except of the ping call, all requests are post requests with json bodies. There 
 
 All calls will be described here:
 
-### /addFunction (Post)
+### Details to rest calls calls which doesn't need credentials
+
+#### /ping (Get)
+
+returns pong with http status 200. Is only to check if the service is started.
+
+##### Sample call
+
+``https://localhost:8080/ping``
+
+#### /addFunction (Post)
 
 adds a new function to the server and stores it in the database. This call doesn't executes and validates the fucntion. It returns an error if the function already exists for the given botId. If the function was successfully added to the database. the function returns the stored function object with http 200.
 
-#### Sample call
+##### Sample call
 
 https://localhost:8080/addFunction
 
-#### JSON Body:
+##### JSON Body:
 
 ``{
     "name" : "<name of function>",  
@@ -44,7 +54,7 @@ https://localhost:8080/addFunction
     "appId" : "<the given appId or accesstoken which allows you to add functions on the server>"  
 }``
   
-#### Sample JSON Body
+##### Sample JSON Body
 `` {  
     "name" : "test",  
     "botId" : "1",  
@@ -52,7 +62,7 @@ https://localhost:8080/addFunction
     "appId" : "4596e30a-ef06-4285-87f2-15019b942a34"  
 }``
 
-#### Sample result
+##### Sample result
 
 ``{
     "name": "test",
@@ -62,7 +72,7 @@ https://localhost:8080/addFunction
     "appId": "4596e30a-ef06-4285-87f2-15019b942a34"
 }``
 
-#### Explanation of the JSON input values:
+##### Explanation of the JSON input values:
  
  **name**
   the unique name of the function corresponding to the botid. 
@@ -77,29 +87,29 @@ https://localhost:8080/addFunction
   the service provider will support you with an appId. Only with an valid appId you are able to add functions to the server. 
   
   
-### /getFunction (Post)
+#### /getFunction (Post)
 
 returns the function data of the given function in database. If the function wasn't found an 404 error code will be returned.
 
-#### Sample call
+##### Sample call
 
 https://localhost:8080/getFunction
 
-#### JSON Body:
+##### JSON Body:
 ``{
     "name": "<name of function>",
     "botId": "<botId of Function>",
     "appId": "<provided appId>"
 }``
 
-#### Sample JSON Body
+##### Sample JSON Body
 ``{
     "name": "test",
     "botId": "1",
     "appId": "4596e30a-ef06-4285-87f2-15019b942a34"
 }``
     
-#### Sample result
+##### Sample result
 
 ``{
     "name": "test",
@@ -109,7 +119,7 @@ https://localhost:8080/getFunction
     "appId": "4596e30a-ef06-4285-87f2-15019b942a34"
 }``
 
-#### Explanation of the JSON input values:
+##### Explanation of the JSON input values:
  
  **name**
   the unique name of the function corresponding to the botid. 
@@ -120,15 +130,15 @@ https://localhost:8080/getFunction
   **appId**
   the service provider will support you with an appId. Only with an valid appId you are able to add functions to the server. 
   
-  ### /updateFunction (Post)
+  #### /updateFunction (Post)
 
 updates a given function on the functionserver. The code will be replaced in the database. If successfull, the function returns the stored function object with http 200.
 
-#### Sample call
+##### Sample call
 
 https://localhost:8080/updateFunction
 
-#### JSON Body:
+##### JSON Body:
 
 ``{
     "name" : "<name of function>",  
@@ -137,7 +147,7 @@ https://localhost:8080/updateFunction
     "appId" : "<the given appId or accesstoken which allows you to add functions on the server>"  
 }``
   
-#### Sample JSON Body
+##### Sample JSON Body
 `` {  
     "name" : "test",  
     "botId" : "1",  
@@ -145,7 +155,7 @@ https://localhost:8080/updateFunction
     "appId" : "4596e30a-ef06-4285-87f2-15019b942a34"  
 }``
 
-#### Sample result
+##### Sample result
 
 ``{
     "name": "test",
@@ -155,7 +165,7 @@ https://localhost:8080/updateFunction
     "appId": "4596e30a-ef06-4285-87f2-15019b942a34"
 }``
 
-#### Explanation of the JSON input values:
+##### Explanation of the JSON input values:
  
  **name**
   the unique name of the function corresponding to the botid. 
@@ -169,35 +179,35 @@ https://localhost:8080/updateFunction
   **appId**
   the service provider will support you with an appId. Only with an valid appId you are able to add functions to the server. 
   
-### /deleteFunction (Post)
+#### /deleteFunction (Post)
 
 delets the given function in database. After deletion execution is not possible anymore. If successfull code 200 will be returned.
 
-#### Sample call
+##### Sample call
 
 https://localhost:8080/deleteFunction
 
-#### JSON Body:
+##### JSON Body:
 ``{
     "name": "<name of function>",
     "botId": "<botId of Function>",
     "appId": "<provided appId>"
 }``
 
-#### Sample JSON Body
+##### Sample JSON Body
 ``{
     "name": "test",
     "botId": "1",
     "appId": "4596e30a-ef06-4285-87f2-15019b942a34"
 }``
     
-#### Sample result
+##### Sample result
 {
     "result": "function deleted"
 }
 
 
-#### Explanation of the JSON input values:
+##### Explanation of the JSON input values:
  
  **name**
   the unique name of the function corresponding to the botid. 
@@ -209,15 +219,15 @@ https://localhost:8080/deleteFunction
   the service provider will support you with an appId. Only with an valid appId you are able to add functions to the server. 
   
   
-### /executeFunction (Post)
+#### /executeFunction (Post)
 
 delets the given function in database. After deletion execution is not possible anymore. If successfull code 200 will be returned.
 
-#### Sample call
+##### Sample call
 
 https://localhost:8080/executeFunction
 
-#### JSON Body:
+##### JSON Body:
 ``{
     "name": "<name of function>",
     "botId": "<botId of Function>",
@@ -225,7 +235,7 @@ https://localhost:8080/executeFunction
     "params": "<paramter name and value map>"
 }``
 
-#### Sample JSON Body
+##### Sample JSON Body
 ``{
     "name": "add",
     "botId": "1",
@@ -233,13 +243,13 @@ https://localhost:8080/executeFunction
     "params": {"p1" : "4", "p2" : "6"}
 }``
     
-#### Sample result
+##### Sample result
 {
     "result": "10"
 }
 
 
-#### Explanation of the JSON input values:
+##### Explanation of the JSON input values:
  
  **name**
   the unique name of the function corresponding to the botid. 
@@ -253,27 +263,27 @@ https://localhost:8080/executeFunction
   **params**
   The params which will be injected in the runtime. In the add example above the code in the script engine is return parseInt(p1) + parseInt(p2), because every parameter will be added as string to the script engine. the result will always be returned as string as well.
 
-### /getFunctionList (Post)
+#### /getFunctionList (Post)
 
 returns all functions of the given botId.
 
-#### Sample call
+##### Sample call
 
 https://localhost:8080/getFunctionList
 
-#### JSON Body:
+##### JSON Body:
 ``{
     "botId": "<botId of Function>",
     "appId": "<provided appId>"
 }``
 
-#### Sample JSON Body
+##### Sample JSON Body
 ``{
     "botId": "1",
     "appId": "4596e30a-ef06-4285-87f2-15019b942a34"
 }``
     
-#### Sample result
+##### Sample result
 
 ``{
     "name": "test",
@@ -288,7 +298,7 @@ https://localhost:8080/getFunctionList
     "version": 0,
 }``
 
-#### Explanation of the JSON input values:
+##### Explanation of the JSON input values:
   
  **botId**
   The id of the bot which needs this function. This service was introduce as simple functionserver  our max chatbot system. So the bot developer can easily add custom functions to bots. So a botId is always mandantory. If you want to use this service for other purposes. set the botId to 0. 
@@ -296,42 +306,34 @@ https://localhost:8080/getFunctionList
   **appId**
   the service provider will support you with an appId. Only with an valid appId you are able to add functions to the server. 
 
-### /ping (Get)
-
-returns pong with http status 200. Is only to check if the service is started.
-
-#### Sample call
-
-``https://localhost:8080/ping``
-
-### /checkCredentials (post)
+#### /checkCredentials (post)
 
 returns if appid is valid and assigned to the botid, so the user is able to work with this credentials.
 
-#### Sample call
+##### Sample call
 
 https://localhost:8080/checkCredentials
 
-#### JSON Body:
+##### JSON Body:
 ``{
     "botId": "<botId of Function>",
     "appId": "<provided appId>"
 }``
 
-#### Sample JSON Body
+##### Sample JSON Body
 ``{
     "botId": "1",
     "appId": "4596e30a-ef06-4285-87f2-15019b942a34"
 }``
     
-#### Sample result
+##### Sample result
 
 if the appId has the credentials:
 ``httpStatusOK, "Access granted"``
 if not:
 ``http.StatusForbidden, "Access failed"``
 
-#### Explanation of the JSON input values:
+##### Explanation of the JSON input values:
   
  **botId**
   The id of the bot which needs to be checked. 
@@ -341,14 +343,14 @@ if not:
 
 ## Rest calls calls which need super user credentials (superuser appId is required)
 
-## /createAppId (post)
+### /createAppId (post)
 creates a new appId and returns it. 
 
-#### Sample call
+##### Sample call
 
 https://localhost:8080/createAppId
 
-#### JSON Body:
+##### JSON Body:
 
 ``{
     "superUserAppId": "<appId of a superuser>",
@@ -356,21 +358,21 @@ https://localhost:8080/createAppId
     "contact": "<the mailaddress of the owner>"
 }``
 
-#### Sample JSON Body
+##### Sample JSON Body
 ``{
     "superUserAppId": "1",
     "owner": "Willy Mustermann from Sample Inc."
     "contact": "willy.mustermann@sample.com"
 }``
     
-#### Sample result
+##### Sample result
 
 if the appId was successfully created:
 ``http.StatusOK, "3596e30d-af06-4285-87f2-15019b942a11"``
 if not:
 ``http.StatusBadRequest, "create AppId failed"``
 
-#### Explanation of the JSON input values:
+##### Explanation of the JSON input values:
   
  **superUserAppId**
   The superuserAppId which want's to create the new appId.
@@ -381,33 +383,33 @@ if not:
    **contact**
   the mail address, to reach the appId owner out, in case of changing something on the service.
 
-### /deleteAppId (post)
+#### /deleteAppId (post)
 deletes an appId, so access over this appId is not possible to any bot.
 
-#### Sample call
+##### Sample call
 
 https://localhost:8080/deleteAppId
 
-#### JSON Body:
+##### JSON Body:
 ``{
     "superUserAppId": "<the superuser app id which wants to execute this calls>",
     "appId": "<the appid to delete>"
 }``
 
-#### Sample JSON Body
+##### Sample JSON Body
 ``{
     "superUserAppId": "3596e30d-af06-4285-87f2-15019b942a11",
     "appId": "4596e30a-ef06-4285-87f2-15019b942a34"
 }``
     
-#### Sample result
+##### Sample result
 
 if the appId has the credentials:
 ``httpStatusOK, "AppId deleted"``
 if not:
 ``http.StatusBadRequest, "deletion of AppId failed"``
 
-#### Explanation of the JSON input values:
+##### Explanation of the JSON input values:
   
  **superUserAppId**
   The superuserAppId which want's to create the new appId.
@@ -415,36 +417,36 @@ if not:
   **appId**
   the appId which is expected to be assigned to the botId, and is able to execute function. If the given appId is a superuser appId, it returns true as well.
 
-## /addCredentials (post)
+### /addCredentials (post)
 
 grant access of an appId to a bot, so you can add, delete or execute functions with the appId.
 
-#### Sample call
+##### Sample call
 
 https://localhost:8080/addCredentials
 
-#### JSON Body:
+##### JSON Body:
 ``{
     "superUserAppId": "<the superuser app id which wants to execute this calls>",
     "botId": "<botId of Function>",
     "appId": "<provided appId>"
 }``
 
-#### Sample JSON Body
+##### Sample JSON Body
 ``{
     "superUserAppId": "3596e30d-af06-4285-87f2-15019b942a11",
     "botId": "1",
     "appId": "4596e30a-ef06-4285-87f2-15019b942a34"
 }``
     
-#### Sample result
+##### Sample result
 
 if the appId has the credentials:
 ``httpStatusOK, "Access granted"``
 if not:
 ``http.StatusBadRequest, "Access failed"``
 
-#### Explanation of the JSON input values:
+##### Explanation of the JSON input values:
   
  **superUserAppId**
   The superuserAppId which want's to create the new appId.
@@ -455,36 +457,36 @@ if not:
   **appId**
   the appId which is expected to be assigned to the botId, and is able to execute function. If the given appId is a superuser appId, it returns true as well.
 
-### /deleteCredentials (post)
+#### /deleteCredentials (post)
 
 returns if appid is valid and assigned to the botid, so the user is able to work with this credentials.
 
-#### Sample call
+##### Sample call
 
 https://localhost:8080/deleteCredentials
 
-#### JSON Body:
+##### JSON Body:
 ``{
     "superUserAppId": "3596e30d-af06-4285-87f2-15019b942a11",
     "botId": "1",
     "appId": "4596e30a-ef06-4285-87f2-15019b942a34"
 }``
 
-#### Sample JSON Body
+##### Sample JSON Body
 ``{
     "superUserAppId": "3596e30d-af06-4285-87f2-15019b942a11",
     "botId": "1",
     "appId": "4596e30a-ef06-4285-87f2-15019b942a34"
 }``
     
-#### Sample result
+##### Sample result
 
 if the appId has the credentials:
 ``httpStatusOK, "Access deleted"``
 if not:
 ``http.StatusBadRequest, "Access failed"``
 
-#### Explanation of the JSON input values:
+##### Explanation of the JSON input values:
   
  **superUserAppId**
   The superuserAppId which want's to create the new appId.
