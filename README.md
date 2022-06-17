@@ -3,17 +3,27 @@ The Functionserver executes jaavscript functions on serverside. The javascript c
 
 To make live easier we added two simple http request function to javascript (httpget and httppost) which executes the http commands. there are some config files which must be edited to make the service available. they all are stored in the service directory.
 
-## REST API Descirption
+## REST API Description
 
 Except of the ping call, all requests are post requests with json bodies. There are 7 different requests:
 
+### Rest calls calls which doesn't need credentials
+-  /ping (get)
+
+### Rest calls calls which need default credentials (appId and botId must be assigned on the server)
 -  /addFunction (post)
 -  /getFunction (post)
 -  /updateFunction (post)
 -  /deleteFunction (post)
 -  /executeFunction (post)
 -  /getFunctionList (post)
--  /ping (get)
+- /checkCredentials (post)
+
+### Rest calls calls which need super user credentials (superuser appId is required)
+- /createAppId (post)
+- /deleteAppId (post)
+- /addCredentials (post)
+- /deleteCredentials (post)
 
 All calls will be described here:
 
