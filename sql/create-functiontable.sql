@@ -27,6 +27,6 @@ ADD CONSTRAINT `FK_APPIDS`
 
   CREATE TABLE `key_value_store` (
   `botId` VARCHAR(64) NOT NULL,
-  `key` VARCHAR(64) NOT NULL,
+  `identifier` VARCHAR(64) NOT NULL,
   `value` LONGTEXT NULL,
   PRIMARY KEY (`botId`, `key`));

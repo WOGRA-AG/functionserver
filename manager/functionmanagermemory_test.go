@@ -4,11 +4,21 @@ import (
 	"testing"
 )
 
+func generateTestFunctionMem() *FunctionDescription {
+	var newFunction = new(FunctionDescription)
+	newFunction.Name = "test"
+	newFunction.BotId = "1"
+	newFunction.Code = "return 2 + 2"
+	newFunction.AppId = "1"
+
+	return newFunction
+}
+
 func TestAddAndFindFunction(t *testing.T) {
 
 	fm := NewMemory()
 
-	var testFunction = generateTestFunction()
+	var testFunction = generateTestFunctionMem()
 
 	fm.AddFunction(testFunction)
 
@@ -21,7 +31,7 @@ func TestSearchWithInvalidBotId(t *testing.T) {
 
 	fm := NewMemory()
 
-	var testFunction = generateTestFunction()
+	var testFunction = generateTestFunctionMem()
 	testFunction.BotId = "5000"
 
 	fm.AddFunction(testFunction)
@@ -37,7 +47,7 @@ func TestSearchInvalidFunctionName(t *testing.T) {
 
 	fm := NewMemory()
 
-	var testFunction = generateTestFunction()
+	var testFunction = generateTestFunctionMem()
 
 	fm.AddFunction(testFunction)
 
@@ -51,7 +61,7 @@ func TestSearchInvalidFunctionName(t *testing.T) {
 func TestExecuteFunction(t *testing.T) {
 
 	fm := NewMemory()
-	var testFunction = generateTestFunction()
+	var testFunction = generateTestFunctionMem()
 
 	fm.AddFunction(testFunction)
 

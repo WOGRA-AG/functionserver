@@ -60,7 +60,7 @@ func (fm FunctionManagerMemory) AddFunction(fd *FunctionDescription) *FunctionDe
 }
 
 func (fm FunctionManagerMemory) validateAppId(appId string) bool {
-	return HasAccessToken(appId)
+	return true
 }
 
 func (fm FunctionManagerMemory) ExecuteFunction(call *FunctionCall) (string, error) {
@@ -69,7 +69,7 @@ func (fm FunctionManagerMemory) ExecuteFunction(call *FunctionCall) (string, err
 		fd := fm.findFunction(call.Name, call.BotId)
 
 		if fd != nil {
-			result, err := executor.WrapAndExecuteJSFunction(fd.Code, call.Params)
+			result, err := executor.ExecuteFunction(call.BotId, fd.Code, call.Params)
 			return result, err
 		} else {
 			return "", fmt.Errorf("function %q not found for bot %q", call.Name, call.BotId)
@@ -107,10 +107,29 @@ func (fm FunctionManagerMemory) DeleteFunction(fd *FunctionDescription) bool {
 	return false
 }
 
-func (fm FunctionManagerMemory) GetFunctionList(botId string, appId string) []*FunctionDescription {
+func (fm FunctionManagerMemory) GetFunctionList(appId string, botId string) []*FunctionDescription {
 	if fm.validateAppId(appId) {
 		return maps.Values(fm.Functions)
 	}
 
 	return nil
+}
+
+func (fm FunctionManagerMemory) CreateAppId(appId string) string {
+	return ""
+}
+
+func (fm FunctionManagerMemory) DeleteAppId(appId string, appIdToDelete string) bool {
+	return false
+}
+
+func (fm FunctionManagerMemory) CheckCredentials(botId string, appId string) bool {
+	return false
+}
+func (fm FunctionManagerMemory) AddCredentials(botId string, appId string) bool {
+	return false
+}
+
+func (fm FunctionManagerMemory) DeleteCredentials(botId string, appId string) bool {
+	return false
 }

@@ -21,5 +21,10 @@ type FunctionManager interface {
 	ExecuteFunction(call *FunctionCall) (string, error)
 	UpdateFunction(fd *FunctionDescription) bool
 	DeleteFunction(fd *FunctionDescription) bool
-	GetFunctionList(botId string, appId string) []*FunctionDescription
+	GetFunctionList(appId string, botId string) []*FunctionDescription
+	CreateAppId(appId string, owner string, contact string) string
+	DeleteAppId(appId string, appIdToDelete string) bool
+	CheckCredentials(appId string, botId string) bool
+	AddCredentials(superuserAppId string, appId string, botId string) bool
+	DeleteCredentials(superuserAppId string, appId string, botId string) bool
 }
