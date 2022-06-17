@@ -350,13 +350,24 @@ To load and save data we integrated a key value store for storing and loading da
     
 #### string loadDocument(string key)
 loads the document with given key and returns the content as string.
+
+**Example:**
+
+``var content = loadDocument("myKey")``
     
 #### bool saveDocument(string key, string content)
  saves the document conent with the given key. returns true if storing was successfull. if the key already exists, the content will be overridden by the function.
-    
+
+**Example:**
+
+``var success = saveDocument("myKey", "this is my content.")``
+
 #### bool deleteDocument(string key)
 deletes the document with the given key.
-  
+
+**Example:**
+
+``var success = deleteDocument("myKey")``
 ## Used frameworks
 
 - restservice was implemented by the gin framework (github.com/gin-gonic/gin)
