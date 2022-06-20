@@ -574,6 +574,7 @@ deletes the document with the given key.
 
 - restservice was implemented by the gin framework (github.com/gin-gonic/gin)
 - javascript will be executed over the otto js framework (github.com/robertkrimen/otto)  
+- reading configuration from file or environment variables (https://github.com/spf13/viper)
 
 ## Further plans
 see issue list for further plans.
