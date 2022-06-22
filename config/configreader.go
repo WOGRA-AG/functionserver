@@ -7,8 +7,9 @@ import (
 )
 
 type RestConfig struct {
-	Host string
-	Port string
+	Host           string
+	Port           string
+	TrustedProxies []string
 }
 
 type DbConfig struct {

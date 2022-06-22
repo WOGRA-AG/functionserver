@@ -1,0 +1,1 @@
+return parseInt(p1) + parseInt(p2);

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	"wogra.com/config"
@@ -11,6 +12,22 @@ import (
 )
 
 var functionManager *manager.FunctionManagerDb
+
+func runAsService() {
+	file, err := os.OpenFile("functionmanager-logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.SetOutput(file)
+	log.SetFlags(log.Ldate | log.Ltime | log.Lmicroseconds | log.Llongfile)
+
+	err = initWebService()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+}
 
 func initWebService() error {
 
@@ -40,6 +57,10 @@ func initWebService() error {
 
 		restConfig := config.ReadRestConfiguration()
 		connection := restConfig.Host + ":" + restConfig.Port
+
+		if len(restConfig.TrustedProxies) > 0 {
+			router.SetTrustedProxies(restConfig.TrustedProxies)
+		}
 
 		router.Run(connection)
 	} else {

@@ -1,2 +1,4 @@
 Host: "localhost"
 Port: "8080"
+TrustedProxies: 
+  - "127.0.01"
