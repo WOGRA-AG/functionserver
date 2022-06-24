@@ -3,6 +3,36 @@ The Functionserver executes jaavscript functions on serverside. The javascript c
 
 To make live easier we added two simple http request function to javascript (httpget and httppost) which executes the http commands. there are some config files which must be edited to make the service available. they all are stored in the service directory.
 
+## Config Files
+The function server needs two config files for running. one config files is used for database access configuration. The second is used for rest service configuration. Because we use spf/viper (https://github.com/spf13/viper) the configuration can be done over environment variables as well. The configurations will be stored as yaml files in the execution directory.
+
+### Database Access
+
+the databaseaccess configuration is named db.yaml. Here is a sample configuration:
+
+``
+DatabaseName: "maxbot"  
+DatabaseUrl: "127.0.0.1"  
+DatabasePort: "3306"  
+Login: "root"  
+Password: "root"  
+``
+
+At the moment a mysql db is implemented. The databasename is the scheme of the database. 
+
+### Rest Service Configuraiont
+
+The rest service configuration is stored in the rest.yaml file. Here is a sample for local access:
+
+``
+Host: "localhost"  
+Port: "8080"  
+TrustedProxies:   
+  - "127.0.01"  
+``
+
+The rest service is implemented bi gonic/gin (github.com/gin-gonic/gin).
+
 ## REST API Description
 
 Except of the ping call, all requests are post requests with json bodies. There are 7 different requests:
