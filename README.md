@@ -25,10 +25,10 @@ At the moment a mysql db is implemented. The databasename is the scheme of the d
 The rest service configuration is stored in the rest.yaml file. Here is a sample for local access:
 
 
-   Host: "localhost"  
-   Port: "8080"  
-   TrustedProxies:   
-      - "127.0.01"  
+    Host: "localhost"  
+    Port: "8080"  
+    TrustedProxies:   
+       - "127.0.01"  
 
 
 The rest service is implemented bi gonic/gin (github.com/gin-gonic/gin).
