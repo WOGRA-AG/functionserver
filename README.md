@@ -10,13 +10,13 @@ The function server needs two config files for running. one config files is used
 
 the databaseaccess configuration is named db.yaml. Here is a sample configuration:
 
-``
-DatabaseName: "maxbot"  
-DatabaseUrl: "127.0.0.1"  
-DatabasePort: "3306"  
-Login: "root"  
-Password: "root"  
-``
+
+    DatabaseName: "maxbot"  
+    DatabaseUrl: "127.0.0.1"  
+    DatabasePort: "3306"  
+    Login: "root"  
+    Password: "root"  
+
 
 At the moment a mysql db is implemented. The databasename is the scheme of the database. 
 
