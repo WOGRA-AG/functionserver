@@ -20,7 +20,7 @@ the databaseaccess configuration is named db.yaml. Here is a sample configuratio
 
 At the moment a mysql db is implemented. The databasename is the scheme of the database. 
 
-### Rest Service Configuraiont
+### Rest Service Configuration
 
 The rest service configuration is stored in the rest.yaml file. Here is a sample for local access:
 
